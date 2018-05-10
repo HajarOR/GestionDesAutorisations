@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProtestationCreateDlg" widgetVar="ProtestationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProtestationTitle}">
+            <h:form id="ProtestationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{protestationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_numBureauOrdre}" for="numBureauOrdre" />
+                        <p:inputText id="numBureauOrdre" value="#{protestationController.selected.numBureauOrdre}" title="#{bundle.CreateProtestationTitle_numBureauOrdre}" />
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{protestationController.selected.nom}" title="#{bundle.CreateProtestationTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{protestationController.selected.prenom}" title="#{bundle.CreateProtestationTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_cin}" for="cin" />
+                        <p:inputText id="cin" value="#{protestationController.selected.cin}" title="#{bundle.CreateProtestationTitle_cin}" />
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_tele}" for="tele" />
+                        <p:inputText id="tele" value="#{protestationController.selected.tele}" title="#{bundle.CreateProtestationTitle_tele}" />
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_cause}" for="cause" />
+                        <p:inputText id="cause" value="#{protestationController.selected.cause}" title="#{bundle.CreateProtestationTitle_cause}" />
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_dateProtestation}" for="dateProtestation" />
+                        <p:calendar id="dateProtestation" pattern="MM/dd/yyyy" value="#{protestationController.selected.dateProtestation}" title="#{bundle.EditProtestationTitle_dateProtestation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_adresseProjet}" for="adresseProjet" />
+                        <p:selectOneMenu id="adresseProjet" value="#{protestationController.selected.adresseProjet}" >
+                            <f:selectItems value="#{adresseController.itemsAvailableSelectOne}"
+                                           var="adresseProjetItem"
+                                           itemValue="#{adresseProjetItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_adressePersonnel}" for="adressePersonnel" />
+                        <p:selectOneMenu id="adressePersonnel" value="#{protestationController.selected.adressePersonnel}" >
+                            <f:selectItems value="#{adresseController.itemsAvailableSelectOne}"
+                                           var="adressePersonnelItem"
+                                           itemValue="#{adressePersonnelItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProtestationLabel_activite}" for="activite" />
+                        <p:selectOneMenu id="activite" value="#{protestationController.selected.activite}" >
+                            <f:selectItems value="#{activiteController.itemsAvailableSelectOne}"
+                                           var="activiteItem"
+                                           itemValue="#{activiteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{protestationController.create}" value="#{bundle.Save}" update="display,:ProtestationListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProtestationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProtestationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

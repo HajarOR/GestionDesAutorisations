@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DemandeCreateDlg" widgetVar="DemandeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDemandeTitle}">
+            <h:form id="DemandeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{demandeController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_numBureauOrdre}" for="numBureauOrdre" />
+                        <p:inputText id="numBureauOrdre" value="#{demandeController.selected.numBureauOrdre}" title="#{bundle.CreateDemandeTitle_numBureauOrdre}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{demandeController.selected.nom}" title="#{bundle.CreateDemandeTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{demandeController.selected.prenom}" title="#{bundle.CreateDemandeTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_cin}" for="cin" />
+                        <p:inputText id="cin" value="#{demandeController.selected.cin}" title="#{bundle.CreateDemandeTitle_cin}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_tele}" for="tele" />
+                        <p:inputText id="tele" value="#{demandeController.selected.tele}" title="#{bundle.CreateDemandeTitle_tele}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_dateDemande}" for="dateDemande" />
+                        <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateDemande}" title="#{bundle.EditDemandeTitle_dateDemande}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_activite}" for="activite" />
+                        <p:selectOneMenu id="activite" value="#{demandeController.selected.activite}" >
+                            <f:selectItems value="#{activiteController.itemsAvailableSelectOne}"
+                                           var="activiteItem"
+                                           itemValue="#{activiteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_adresseProjet}" for="adresseProjet" />
+                        <p:selectOneMenu id="adresseProjet" value="#{demandeController.selected.adresseProjet}" >
+                            <f:selectItems value="#{adresseController.itemsAvailableSelectOne}"
+                                           var="adresseProjetItem"
+                                           itemValue="#{adresseProjetItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_adressePersonnel}" for="adressePersonnel" />
+                        <p:selectOneMenu id="adressePersonnel" value="#{demandeController.selected.adressePersonnel}" >
+                            <f:selectItems value="#{adresseController.itemsAvailableSelectOne}"
+                                           var="adressePersonnelItem"
+                                           itemValue="#{adressePersonnelItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_autorisation}" for="autorisation" />
+                        <p:selectOneMenu id="autorisation" value="#{demandeController.selected.autorisation}" >
+                            <f:selectItems value="#{autorisationController.itemsAvailableSelectOne}"
+                                           var="autorisationItem"
+                                           itemValue="#{autorisationItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{demandeController.create}" value="#{bundle.Save}" update="display,:DemandeListForm:datalist,:growl" oncomplete="handleSubmit(args,'DemandeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DemandeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
