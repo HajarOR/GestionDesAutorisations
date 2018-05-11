@@ -15,6 +15,7 @@
 
         <ui:define name="body">
             <h:form id="ActiviteListForm">
+                <h:outputText value="#{activiteController.afficher()}" />
                 <p:panel header="#{bundle.ListActiviteTitle}">
                     <p:dataTable id="datalist" value="#{activiteController.items}" var="item"
                                  selectionMode="single" selection="#{activiteController.selected}"

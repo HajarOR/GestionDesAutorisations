@@ -28,6 +28,9 @@ public class ActiviteController implements Serializable {
     private List<Activite> items = null;
     private Activite selected;
 
+    public void afficher(){
+       getFacade().testAffichage();
+    }
     public ActiviteController() {
     }
 
