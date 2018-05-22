@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="Head.xhtml"/>
+        <div id="login-page">
+            <div class="container loginBody">
+
+                <h:form class="form-login">
+                    <h2 class="form-login-heading"><h:outputLabel value="Se connecter maintenant"/></h2>
+                    <div class="login-wrap">
+                        <p:outputLabel value="Nom d'utilisateur" /><br/><br/>
+                        <p:inputText value="" class="form-control" /><br/>
+                        <p:outputLabel value="Mot de passe" /><br/><br/>
+                        <p:inputText value="" class="form-control" /><br/>
+
+                        <label class="checkbox">
+                            <span class="pull-right">
+                                <p:commandLink actionListener="null" value="Mot de passe oublié?" onclick="PF('pwdOublie').show();"></p:commandLink>
+                            </span>
+                        </label><br/>
+                        <p:commandButton class="btn btn-theme btn-block" action="Accueil.xhtml"   type="submit" value="SE CONNECTER"></p:commandButton>
+                        <hr/>
+                        <div class="registration">
+                            <h:outputLabel value="Vous n'avez pas un compte?"/><br/>
+                            <p:commandLink  action="#" value=" S'inscrire"></p:commandLink> 
+                        </div>
+                    </div>
+                </h:form>
+
+            </div>
+        </div>
+        <script>
+            $.backstretch("../resources/img/login-bg.jpg", {speed: 500});
+        </script>
+        <ui:include src="PasswordDialog.xhtml"/>
+    </h:body>
+</html>
+

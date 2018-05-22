@@ -5,7 +5,11 @@
  */
 package service;
 
+import bean.Adresse;
+import bean.Demande;
 import bean.Protestation;
+import controller.util.SearchUtil;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +32,14 @@ public class ProtestationFacade extends AbstractFacade<Protestation> {
     public ProtestationFacade() {
         super(Protestation.class);
     }
-    
+
+    public List<Protestation> searchDemande(Adresse adresse) {
+        if (adresse == null) {
+            return null;
+        } else {
+            String requete = "SELECT p FROM Protestation p WHERE p.adresseProjet='" + adresse + "' ";
+            return getMultipleResult(requete);
+        }
+    }
+
 }

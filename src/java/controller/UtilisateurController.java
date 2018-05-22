@@ -3,6 +3,7 @@ package controller;
 import bean.Utilisateur;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
+import controller.util.SessionUtil;
 import service.UtilisateurFacade;
 
 import java.io.Serializable;
@@ -71,6 +72,24 @@ public class UtilisateurController implements Serializable {
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
+        }
+    }
+
+    public String connecter() {
+        int res = getFacade().seConnecter(selected);
+        if (res > 0) {
+            Utilisateur utilisateur = getFacade().find(selected.getLogin());
+            SessionUtil.setAttribute("connectedUder", utilisateur);
+            JsfUtil.addSuccessMessage("Connexion avec succès");
+            return null;
+        } else if (res == -1) {
+            JsfUtil.addErrorMessage("Entrer vos informations");
+            return null;
+        } else if (res == -2) {
+            JsfUtil.addErrorMessage("Votre adresse electronique ou mot de passe");
+            return null;
+        } else {
+            return null;
         }
     }
 
