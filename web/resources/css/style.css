@@ -15,11 +15,24 @@ Premium: http://www.gridgum.com
     background-image: none;
     color: #ffffff;
 }
-/* fin css ajoute */
-
 .loginBody{
     background-image: url(../resources/img/login-bg.jpg);
 }
+
+.inscMt {
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 5%;
+    background: #2bb4e8;
+    align-content: center;
+}
+.insBg{
+    margin: 0px;
+    background-color: #44ccfe;
+}
+/* fin css ajoute */
+
 
 /* BASIC THEME CONFIGURATION */
 body {

@@ -13,6 +13,111 @@
             <ui:include src="Head.xhtml"/>
             <ui:include src="JsPage.xhtml"/>
 
+            <!-- **********************************************************************************************************************************************************
+            MAIN CONTENT
+            *********************************************************************************************************************************************************** -->
+            <section class="inscMt">
+                <h:form class="well form-horizontal insBg">
+                    <center><h2 class="mb">Creer Votre Compte</h2></center><br>
+                        <div class="form-group">
+                            <label class="col-md-2"></label>
+                            <p:outputLabel value="Prenom" class="col-md-3 control-label" />
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <p:inputText   placeholder="Prenom" class="form-control" value="#{userController.selected.prenom}"  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2"></label>
+                            <p:outputLabel value="Nom" class="col-md-3 control-label" /> 
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <p:inputText  placeholder="Nom" class="form-control" value="#{userController.selected.nom}"  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2"></label>
+                            <p:outputLabel value="E-mail" class="col-md-3 control-label"/>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <p:inputText placeholder=" Addresse E-Mail" class="form-control" value="#{userController.selected.login}"   />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2"></label>
+                            <p:outputLabel value="Password" class="col-md-3 control-label"/>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <p:password  placeholder=" PassWord" class="form-control" value="#{userController.selected.password}"  />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-2"></label>
+                            <p:outputLabel value="date de Naisseace" class="col-md-3 control-label"/>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <p:calendar id="dateNaissance" pattern="dd/MM/yyyy" value="#{userController.selected.dateNaissance}" />
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- radio checks -->
+                        <div class="form-group">
+                            <label class="col-md-2"></label>
+                            <p:outputLabel value="Sexe" class="col-md-3 control-label" for="Sexe"/>
+                            <div class="col-md-4">
+                                <div class="radio">
+                                    <div class="col-md-5">
+
+
+                                        <h:selectOneRadio id="Sexe" value="#{userController.selected.sexe}">
+                                            <f:selectItem itemLabel="Femme" itemValue="Femme" /> 
+                                            <f:selectItem itemLabel="Homme" itemValue="Homme" />
+                                        </h:selectOneRadio>
+
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                            <!-- Text area --> 
+
+                            <br></br>
+                            <!-- Button -->
+                            <div class="form-group">
+                                <label class=" control-label"></label>
+                                <div class="col-lg-3">
+                                </div>
+                                <div class="col-lg-12">
+                                    <h:commandButton type="submit" class="btn btn-theme btn-blo btn-facebook" style="width:20%; height:50%" value="Créer Compte" action="#{userController.createUser()}"/>
+                                </div></div>
+                        </div></br>
+                </h:form>
+            </section>
+            <!--main content end-->
+            <!--footer start-->
+            <footer class="site-footer">
+
+                <div class="text-center">
+                    Gestion des autorisations
+                    <a href="general.html#" class="go-top">
+                        <i class="fa fa-angle-up" />
+                    </a>
+                </div>
+            </footer>
+            <!--footer end-->
 
         </h:body>
     </h:body>
