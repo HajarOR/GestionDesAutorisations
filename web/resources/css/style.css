@@ -9,27 +9,76 @@ Premium: http://www.gridgum.com
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
 /* css ajoute */
+.button-small.ui-button{
+    color: #fff !important;
+    word-spacing: 0.25em;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    border: none;
+    line-height: 22px;
+    padding: 12px 13px 11px;
+    text-align: center;
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 18px;
+    text-decoration: none;
+    width: 55%;
+}
+.button-small.ui-button:visited{
+    color: #fff;
+}
+.button-small.ui-button{
+    padding: 6px 12px 5px;
+    font-size: 11px;
+    color: #fff;
+    text-shadow: none;
+}
+.button-small.ui-button:hover{
+    color: rgba(255,255,255, 0.75);
+    text-decoration: none;
+    -webkit-box-shadow:inset 0 10px 20px rgba(255,255,255, 0.10);
+    -moz-box-shadow: inset 0 10px 20px rgba(255,255,255, 0.10);
+    box-shadow: inset 0 10px 20px rgba(255,255,255, 0.10);
+}
+.button-small.ui-button:active {
+    -webkit-box-shadow: inset 0 2px 2px rgba(0,0,0, 0.3), inset 0 10px 20px rgba(0,0,0, 0.08);
+    -moz-box-shadow: inset 0 2px 2px rgba(0,0,0, 0.3), inset 0 10px 20px rgba(0,0,0, 0.08);
+    box-shadow: inset 0 2px 2px rgba(0,0,0, 0.3), inset 0 10px 20px rgba(0,0,0, 0.08);
+}
+.rounded3.ui-button {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.blue_light.ui-button {
+    background: #2775e2;    
+}
 .ui-widget-header
 {
     background-color: #68dff0;
     background-image: none;
     color: #ffffff;
 }
-.loginBody{
-    background-image: url(../resources/img/login-bg.jpg);
-}
-
 .inscMt {
-    margin-top: 5%;
+    margin-top: 2%;
     margin-left: 15%;
     margin-right: 15%;
-    margin-bottom: 5%;
-    background: #2bb4e8;
+    margin-bottom: 2%;
     align-content: center;
 }
 .insBg{
     margin: 0px;
-    background-color: #44ccfe;
+    background-color: #EFF8FB;
+    color: #737373;
+}
+.btnIns{
+    height: 30%;
+    width: 55%;
+    align-content: center;
+}
+.insTit{
+    color: #2775e2;
 }
 /* fin css ajoute */
 
@@ -1951,7 +2000,7 @@ label {
 /*LOGIN CONFIGURATION PAGE*/
 .form-login {
     max-width: 40%;
-    margin: 5% auto 0;
+    margin: 7% auto 0;
     background: #fff;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -2241,7 +2290,7 @@ label {
 
 /*footer*/
 .site-footer {
-    background: #68dff0;
+    background: #555555;
     color: #fff;
     padding: 10px 0;
 }

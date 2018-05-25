@@ -32,6 +32,8 @@ public class Demande implements Serializable {
     private String tele;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDemande;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateAnnulation;
     @ManyToOne
     private Activite activite;
     @ManyToOne
@@ -94,6 +96,14 @@ public class Demande implements Serializable {
 
     public void setDateDemande(Date dateDemande) {
         this.dateDemande = dateDemande;
+    }
+
+    public Date getDateAnnulation() {
+        return dateAnnulation;
+    }
+
+    public void setDateAnnulation(Date dateAnnulation) {
+        this.dateAnnulation = dateAnnulation;
     }
 
     public Activite getActivite() {

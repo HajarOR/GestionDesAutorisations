@@ -17,19 +17,19 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
-
+    
     @PersistenceContext(unitName = "gestionAutorisationsPU")
     private EntityManager em;
-
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
     public UtilisateurFacade() {
         super(Utilisateur.class);
     }
-
+    
     public int seConnecter(Utilisateur utilisateur) {
         Utilisateur loadedUser = find(utilisateur.getLogin());
         if (loadedUser.getLogin() == null) {
@@ -40,5 +40,19 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
             return 1;
         }
     }
-
+    
+    public int creerCompte(Utilisateur user) {
+        if (user != null && !"".equals(user.getLogin()) && !"".equals(user.getPassword())) {
+            Utilisateur utilisateur = find(user.getLogin());
+            if (utilisateur == null) {
+                user.setPassword(HashageUtil.sha256(user.getPassword()));
+                create(user);
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+        return -2;
+    }
+    
 }

@@ -19,7 +19,7 @@ public class Utilisateur implements Serializable {
     @Id
     private String login;
     private String password;
-    private String poste;
+    private String type;
     private String nom;
     private String prenom;
 
@@ -46,12 +46,12 @@ public class Utilisateur implements Serializable {
         this.password = password;
     }
 
-    public String getPoste() {
-        return poste;
+    public String getType() {
+        return type;
     }
 
-    public void setPoste(String poste) {
-        this.poste = poste;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getNom() {
@@ -92,7 +92,7 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "login=" + login + ", password=" + password + ", poste=" + poste + ", nom=" + nom + ", prenom=" + prenom + '}';
+        return "Utilisateur{" + "login=" + login + ", password=" + password + ", poste=" + type + ", nom=" + nom + ", prenom=" + prenom + '}';
     }
 
 }

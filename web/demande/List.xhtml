@@ -67,6 +67,14 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDemandeTitle_dateAnnulation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateAnnulation}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDemandeTitle_activite}"/>
                             </f:facet>
                             <h:outputText value="#{item.activite}"/>

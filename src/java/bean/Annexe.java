@@ -27,6 +27,8 @@ public class Annexe implements Serializable {
     private String libelle;
     @OneToMany(mappedBy = "annexe")
     private List<Adresse> adresses;
+    @OneToMany(mappedBy = "annexe")
+    private List<Quartier> quartiers;
 
     public Annexe() {
     }
@@ -57,6 +59,14 @@ public class Annexe implements Serializable {
 
     public void setAdresses(List<Adresse> adresses) {
         this.adresses = adresses;
+    }
+
+    public List<Quartier> getQuartiers() {
+        return quartiers;
+    }
+
+    public void setQuartiers(List<Quartier> quartiers) {
+        this.quartiers = quartiers;
     }
 
     @Override

@@ -39,6 +39,12 @@
                             </f:facet>
                             <h:outputText value="#{item.libelle}"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListQuartierTitle_annexe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.annexe}"/>
+                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{quartierController.prepareCreate}" update=":QuartierCreateForm" oncomplete="PF('QuartierCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":QuartierViewForm" oncomplete="PF('QuartierViewDialog').show()" disabled="#{empty quartierController.selected}"/>

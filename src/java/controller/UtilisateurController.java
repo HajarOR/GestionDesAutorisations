@@ -7,6 +7,7 @@ import controller.util.SessionUtil;
 import service.UtilisateurFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -33,6 +34,9 @@ public class UtilisateurController implements Serializable {
     }
 
     public Utilisateur getSelected() {
+        if (selected == null) {
+            selected = new Utilisateur();
+        }
         return selected;
     }
 
@@ -75,18 +79,39 @@ public class UtilisateurController implements Serializable {
         }
     }
 
+    public String creerCompte() {
+        int res = getFacade().creerCompte(selected);
+        if (res == 1) {
+            SessionUtil.setAttribute("user", ejbFacade.find(selected.getLogin()));
+            JsfUtil.addSuccessMessage("Le compte est crée avec succès");
+            selected = null;
+            return "/template/Connexion";
+
+        } else if (res == -1) {
+            JsfUtil.addErrorMessage("echec:ce compte est déja crée");
+            selected = null;
+            return null;
+        } else {
+            JsfUtil.addErrorMessage("Veuillez remplir tous les champs");
+            selected = null;
+            return null;
+        }
+
+    }
+
     public String connecter() {
         int res = getFacade().seConnecter(selected);
         if (res > 0) {
             Utilisateur utilisateur = getFacade().find(selected.getLogin());
-            SessionUtil.setAttribute("connectedUder", utilisateur);
+            SessionUtil.setAttribute("user", utilisateur);
             JsfUtil.addSuccessMessage("Connexion avec succès");
-            return null;
+            selected = null;
+            return "/template/Accueil";
         } else if (res == -1) {
             JsfUtil.addErrorMessage("Entrer vos informations");
             return null;
         } else if (res == -2) {
-            JsfUtil.addErrorMessage("Votre adresse electronique ou mot de passe");
+            JsfUtil.addErrorMessage("Votre adresse electronique ou mot de passe est incorrecte");
             return null;
         } else {
             return null;
@@ -136,8 +161,15 @@ public class UtilisateurController implements Serializable {
         return getFacade().findAll();
     }
 
-    public List<Utilisateur> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+    public List<String> getItemsAvailableSelectOne() {
+        return initType();
+    }
+
+    public List<String> initType() {
+        List<String> types = new ArrayList();
+        types.add("Personne");
+        types.add("Sociète");
+        return types;
     }
 
     @FacesConverter(forClass = Utilisateur.class)

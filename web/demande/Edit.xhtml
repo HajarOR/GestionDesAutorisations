@@ -24,6 +24,8 @@
                         <p:inputText id="tele" value="#{demandeController.selected.tele}" title="#{bundle.EditDemandeTitle_tele}" />
                         <p:outputLabel value="#{bundle.EditDemandeLabel_dateDemande}" for="dateDemande" />
                         <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateDemande}" title="#{bundle.EditDemandeTitle_dateDemande}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_dateAnnulation}" for="dateAnnulation" />
+                        <p:calendar id="dateAnnulation" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateAnnulation}" title="#{bundle.EditDemandeTitle_dateAnnulation}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditDemandeLabel_activite}" for="activite" />
                         <p:selectOneMenu id="activite" value="#{demandeController.selected.activite}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>

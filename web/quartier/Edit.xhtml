@@ -16,6 +16,13 @@
                         <p:inputText id="id" value="#{quartierController.selected.id}" title="#{bundle.EditQuartierTitle_id}" />
                         <p:outputLabel value="#{bundle.EditQuartierLabel_libelle}" for="libelle" />
                         <p:inputText id="libelle" value="#{quartierController.selected.libelle}" title="#{bundle.EditQuartierTitle_libelle}" />
+                        <p:outputLabel value="#{bundle.EditQuartierLabel_annexe}" for="annexe" />
+                        <p:selectOneMenu id="annexe" value="#{quartierController.selected.annexe}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{annexeController.itemsAvailableSelectOne}"
+                                           var="annexeItem"
+                                           itemValue="#{annexeItem}"/>
+                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{quartierController.update}" value="#{bundle.Save}" update="display,:QuartierListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QuartierEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="QuartierEditDialog.hide()"/>

@@ -28,6 +28,5 @@ public class ActiviteFacade extends AbstractFacade<Activite> {
     public ActiviteFacade() {
         super(Activite.class);
     }
-
-
+    
 }

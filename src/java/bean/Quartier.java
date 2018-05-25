@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -25,6 +26,8 @@ public class Quartier implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String libelle;
+    @ManyToOne
+    private Annexe annexe;
     @OneToMany(mappedBy = "quartier")
     private List<Adresse> adresses;
 
@@ -49,6 +52,14 @@ public class Quartier implements Serializable {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public Annexe getAnnexe() {
+        return annexe;
+    }
+
+    public void setAnnexe(Annexe annexe) {
+        this.annexe = annexe;
     }
 
     public List<Adresse> getAdresses() {

@@ -26,6 +26,10 @@
                         <h:outputText value="#{demandeController.selected.dateDemande}" title="#{bundle.ViewDemandeTitle_dateDemande}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_dateAnnulation}"/>
+                        <h:outputText value="#{demandeController.selected.dateAnnulation}" title="#{bundle.ViewDemandeTitle_dateAnnulation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
                         <h:outputText value="#{bundle.ViewDemandeLabel_activite}"/>
                         <h:outputText value="#{demandeController.selected.activite}" title="#{bundle.ViewDemandeTitle_activite}"/>
                         <h:outputText value="#{bundle.ViewDemandeLabel_adresseProjet}"/>
