@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Gestion des autorisations</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:dataTable id="tableStateDT" var="demande" value="#{demandeController.items}" widgetVar="demandesTable" multiViewState="true"
+                         rows="10" paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         selectionMode="single" selection="#{demandeController.selected}" rowKey="#{demande.numBureauOrdre}"
+                         emptyMessage="Aucune demande avec ces critères" filteredValue="#{demandeController.filteredDemandes}">
+
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Search all fields:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('demandesTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+                    </p:outputPanel>
+                    <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+                    <p:columnToggler datasource="tableStateDT" trigger="toggler" />
+                </f:facet>
+
+                <p:ajax event="rowSelect" update=":form:demandeDetail" oncomplete="PF('demanseDialog').show()" />
+
+                <p:column headerText="N Bureau d'order" filterBy="#{demande.numBureauOrdre}" sortBy="#{demande.numBureauOrdre}" filterMatchMode="contains">
+                    <h:outputText value="#{demande.numBureauOrdre}" />
+                </p:column>
+                <p:column headerText="Nom" filterBy="#{demande.nom}" sortBy="#{demande.nom}" filterMatchMode="contains">
+                    <br/> <h:outputText value="#{demande.nom}" />
+                </p:column>
+                <p:column headerText="Prénom" filterBy="#{demande.prenom}" sortBy="#{demande.prenom}" filterMatchMode="contains">
+                    <h:outputText value="#{demande.prenom}" />
+                </p:column>
+                <p:column headerText="CIN" filterBy="#{demande.cin}" sortBy="#{demande.cin}" filterMatchMode="contains">
+                    <h:outputText value="#{demande.cin}" />
+                </p:column>
+                <p:column headerText="Telephone" filterBy="#{demande.tele}" sortBy="#{demande.tele}" filterMatchMode="contains">
+                    <h:outputText value="#{demande.tele}" />
+                </p:column>
+                <p:column headerText="Date demande" filterBy="#{demande.dateDemande}" sortBy="#{demande.dateDemande}" filterMatchMode="contains">
+                    <h:outputText value="#{demande.dateDemande}" />
+                </p:column>
+                <p:column headerText="Activité" filterBy="#{demande.activite.libelle}" sortBy="#{demande.activite.libelle}" filterMatchMode="contains">
+                    <f:facet name="filter">
+                        <h:outputText value="#{demande.activite.libelle}" />
+                    </f:facet>
+                    <h:outputText value="#{demande.activite.libelle}" />
+                </p:column>
+                <p:column headerText="Adresse projet" filterBy="#{demande.adresseProjet}" sortBy="#{demande.adresseProjet}" filterMatchMode="contains">
+                    <f:facet name="filter">
+                        <h:outputText value="#{demande.adresseProjet}" />
+                    </f:facet>
+                    <h:outputText value="#{demande.adresseProjet}" />
+                </p:column>
+                <p:column headerText="Adresse personnel" filterBy="#{demande.adressePersonnel}" sortBy="#{demande.adressePersonnel}" filterMatchMode="contains">
+                    <f:facet name="filter">
+                        <h:outputText value="#{demande.adressePersonnel}" />
+                    </f:facet>
+                    <h:outputText value="#{demande.adressePersonnel}" />
+                </p:column>
+                <p:column headerText="Action" >
+                    <p:button  icon="ui-icon-pencil">
+                        <f:param name="productId" value="30" />
+                    </p:button>
+                </p:column>
+            </p:dataTable>
+
+            <p:dialog header="Demande Info" widgetVar="demanseDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="demandeDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty demandeController.selected}" columnClasses="label,value">
+
+
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_numBureauOrdre}" for="numBureauOrdre" />
+                        <p:inputText id="numBureauOrdre" value="#{demandeController.selected.numBureauOrdre}" title="#{bundle.EditDemandeTitle_numBureauOrdre}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{demandeController.selected.nom}" title="#{bundle.EditDemandeTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{demandeController.selected.prenom}" title="#{bundle.EditDemandeTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_cin}" for="cin" />
+                        <p:inputText id="cin" value="#{demandeController.selected.cin}" title="#{bundle.EditDemandeTitle_cin}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_tele}" for="tele" />
+                        <p:inputText id="tele" value="#{demandeController.selected.tele}" title="#{bundle.EditDemandeTitle_tele}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_dateDemande}" for="dateDemande" />
+                        <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateDemande}" title="#{bundle.EditDemandeTitle_dateDemande}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_dateAnnulation}" for="dateAnnulation" />
+                        <p:calendar id="dateAnnulation" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateAnnulation}" title="#{bundle.EditDemandeTitle_dateAnnulation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_activite}" for="activite" />
+                        <p:selectOneMenu id="activite" value="#{demandeController.selected.activite}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{activiteController.itemsAvailableSelectOne}"
+                                           var="activiteItem"
+                                           itemValue="#{activiteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_adresseProjet}" for="adresseProjet" />
+                        <p:selectOneMenu id="adresseProjet" value="#{demandeController.selected.adresseProjet}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{adresseController.itemsAvailableSelectOne}"
+                                           var="adresseProjetItem"
+                                           itemValue="#{adresseProjetItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_adressePersonnel}" for="adressePersonnel" />
+                        <p:selectOneMenu id="adressePersonnel" value="#{demandeController.selected.adressePersonnel}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{adresseController.itemsAvailableSelectOne}"
+                                           var="adressePersonnelItem"
+                                           itemValue="#{adressePersonnelItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_autorisation}" for="autorisation" />
+                        <p:selectOneMenu id="autorisation" value="#{demandeController.selected.autorisation}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{autorisationController.itemsAvailableSelectOne}"
+                                           var="autorisationItem"
+                                           itemValue="#{autorisationItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton actionListener="#{demandeController.update}" value="#{bundle.Save}" update="demandeDetail,:form:tableStateDT" oncomplete="handleSubmit(args, 'demanseDialog');" onclick="demanseDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="demanseDialog.hide()"/>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+
