@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProtestationTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ProtestationListForm">
+                <p:panel header="#{bundle.ListProtestationTitle}">
+                    <p:dataTable id="datalist" value="#{protestationController.items}" var="item"
+                                 selectionMode="single" selection="#{protestationController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.numBureauOrdre}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_numBureauOrdre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numBureauOrdre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_nom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_prenom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_cin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cin}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_tele}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tele}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_cause}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cause}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_dateProtestation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateProtestation}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_adresseProjet}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresseProjet}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_adressePersonnel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adressePersonnel}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProtestationTitle_activite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activite}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{protestationController.prepareCreate}" update=":ProtestationCreateForm" oncomplete="PF('ProtestationCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ProtestationViewForm" oncomplete="PF('ProtestationViewDialog').show()" disabled="#{empty protestationController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ProtestationEditForm" oncomplete="PF('ProtestationEditDialog').show()" disabled="#{empty protestationController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{protestationController.destroy}" update=":growl,datalist" disabled="#{empty protestationController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>
