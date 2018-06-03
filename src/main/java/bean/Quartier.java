@@ -92,7 +92,7 @@ public class Quartier implements Serializable {
 
     @Override
     public String toString() {
-        return "Quartier{" + "id=" + id + ", libelle=" + libelle + '}';
+        return "" + libelle;
     }
 
 }

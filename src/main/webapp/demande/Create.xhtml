@@ -14,14 +14,14 @@
                     <p:panelGrid columns="2" rendered="#{demandeController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateDemandeLabel_numBureauOrdre}" for="numBureauOrdre" />
                         <p:inputText id="numBureauOrdre" value="#{demandeController.selected.numBureauOrdre}" title="#{bundle.CreateDemandeTitle_numBureauOrdre}" />
-                        <p:outputLabel value="#{bundle.CreateDemandeLabel_nom}" for="nom" />
-                        <p:inputText id="nom" value="#{demandeController.selected.nom}" title="#{bundle.CreateDemandeTitle_nom}" />
-                        <p:outputLabel value="#{bundle.CreateDemandeLabel_prenom}" for="prenom" />
-                        <p:inputText id="prenom" value="#{demandeController.selected.prenom}" title="#{bundle.CreateDemandeTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_nomComplet}" for="nomComplet" />
+                        <p:inputText id="nomComplet" value="#{demandeController.selected.nomComplet}" title="#{bundle.CreateDemandeTitle_nomComplet}" />
                         <p:outputLabel value="#{bundle.CreateDemandeLabel_cin}" for="cin" />
                         <p:inputText id="cin" value="#{demandeController.selected.cin}" title="#{bundle.CreateDemandeTitle_cin}" />
                         <p:outputLabel value="#{bundle.CreateDemandeLabel_tele}" for="tele" />
                         <p:inputText id="tele" value="#{demandeController.selected.tele}" title="#{bundle.CreateDemandeTitle_tele}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{demandeController.selected.type}" title="#{bundle.CreateDemandeTitle_type}" />
                         <p:outputLabel value="#{bundle.CreateDemandeLabel_dateDemande}" for="dateDemande" />
                         <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateDemande}" title="#{bundle.EditDemandeTitle_dateDemande}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateDemandeLabel_dateAnnulation}" for="dateAnnulation" />

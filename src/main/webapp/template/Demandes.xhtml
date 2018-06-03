@@ -30,11 +30,8 @@
                 <p:column headerText="N Bureau d'order" filterBy="#{demande.numBureauOrdre}" sortBy="#{demande.numBureauOrdre}" filterMatchMode="contains">
                     <h:outputText value="#{demande.numBureauOrdre}" />
                 </p:column>
-                <p:column headerText="Nom" filterBy="#{demande.nom}" sortBy="#{demande.nom}" filterMatchMode="contains">
-                    <br/> <h:outputText value="#{demande.nom}" />
-                </p:column>
-                <p:column headerText="Prénom" filterBy="#{demande.prenom}" sortBy="#{demande.prenom}" filterMatchMode="contains">
-                    <h:outputText value="#{demande.prenom}" />
+                <p:column headerText="Nom" filterBy="#{demande.nomComplet}" sortBy="#{demande.nomComplet}" filterMatchMode="contains">
+                    <h:outputText value="#{demande.nomComplet}" />
                 </p:column>
                 <p:column headerText="CIN" filterBy="#{demande.cin}" sortBy="#{demande.cin}" filterMatchMode="contains">
                     <h:outputText value="#{demande.cin}" />
@@ -78,7 +75,7 @@
                         <p:outputLabel value="#{bundle.EditDemandeLabel_numBureauOrdre}" for="numBureauOrdre" />
                         <p:inputText id="numBureauOrdre" value="#{demandeController.selected.numBureauOrdre}" title="#{bundle.EditDemandeTitle_numBureauOrdre}" />
                         <p:outputLabel value="#{bundle.EditDemandeLabel_nom}" for="nom" />
-                        <p:inputText id="nom" value="#{demandeController.selected.nom}" title="#{bundle.EditDemandeTitle_nom}" />
+                        <p:inputText id="nom" value="#{demandeController.selected.nomComplet}" title="#{bundle.EditDemandeTitle_nom}" />
                         <p:outputLabel value="#{bundle.EditDemandeLabel_prenom}" for="prenom" />
                         <p:inputText id="prenom" value="#{demandeController.selected.prenom}" title="#{bundle.EditDemandeTitle_prenom}" />
                         <p:outputLabel value="#{bundle.EditDemandeLabel_cin}" for="cin" />

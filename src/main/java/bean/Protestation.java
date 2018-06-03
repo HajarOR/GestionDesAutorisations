@@ -22,8 +22,7 @@ public class Protestation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     private Long numBureauOrdre;
-    private String nom;
-    private String prenom;
+    private String nomComplet;
     private String cin;
     private String tele;
     private String cause;
@@ -51,20 +50,12 @@ public class Protestation implements Serializable {
         this.numBureauOrdre = numBureauOrdre;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomComplet() {
+        return nomComplet;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setNomComplet(String nomComplet) {
+        this.nomComplet = nomComplet;
     }
 
     public String getCin() {
@@ -145,7 +136,7 @@ public class Protestation implements Serializable {
 
     @Override
     public String toString() {
-        return "Protestation{" + "numBureauOrdre=" + numBureauOrdre + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin + ", tele=" + tele + ", cause=" + cause + ", dateProtestation=" + dateProtestation + '}';
+        return "Protestation{" + "numBureauOrdre=" + numBureauOrdre + ", nom=" + nomComplet + ", cin=" + cin + ", tele=" + tele + ", cause=" + cause + ", dateProtestation=" + dateProtestation + '}';
     }
 
 }

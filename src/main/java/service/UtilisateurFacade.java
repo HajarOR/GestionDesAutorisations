@@ -29,8 +29,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
     public UtilisateurFacade() {
         super(Utilisateur.class);
     }
-
-    public int seConnecter(Utilisateur utilisateur) {
+  public int seConnecter(Utilisateur utilisateur) {
         Utilisateur loadedUser = find(utilisateur.getLogin());
         if (loadedUser.getLogin() == null) {
             return -1;

@@ -92,7 +92,7 @@ public class Activite implements Serializable {
 
     @Override
     public String toString() {
-        return "Activite{" + "id=" + id + ", libelle=" + libelle + '}';
+        return "" + libelle;
     }
 
 }

@@ -91,7 +91,7 @@ public class Annexe implements Serializable {
 
     @Override
     public String toString() {
-        return "Annexe{" + "id=" + id + ", libelle=" + libelle + '}';
+        return "" + libelle;
     }
 
 }

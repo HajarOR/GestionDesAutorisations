@@ -35,15 +35,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDemandeTitle_nom}"/>
+                                <h:outputText value="#{bundle.ListDemandeTitle_nomComplet}"/>
                             </f:facet>
-                            <h:outputText value="#{item.nom}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDemandeTitle_prenom}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prenom}"/>
+                            <h:outputText value="#{item.nomComplet}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -56,6 +50,12 @@
                                 <h:outputText value="#{bundle.ListDemandeTitle_tele}"/>
                             </f:facet>
                             <h:outputText value="#{item.tele}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDemandeTitle_type}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

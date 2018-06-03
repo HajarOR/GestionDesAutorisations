@@ -32,6 +32,9 @@ public class AutorisationController implements Serializable {
     }
 
     public Autorisation getSelected() {
+        if (selected == null) {
+            selected = new Autorisation();
+        }
         return selected;
     }
 

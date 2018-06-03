@@ -25,7 +25,7 @@ public class Adresse implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long numero;
+    private String numero;
     @ManyToOne
     private Annexe annexe;
     @ManyToOne
@@ -51,11 +51,11 @@ public class Adresse implements Serializable {
         this.id = id;
     }
 
-    public Long getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Long numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -113,7 +113,7 @@ public class Adresse implements Serializable {
 
     @Override
     public String toString() {
-        return "Adresse{" + "id=" + id + ", numero=" + numero + '}';
+        return "Adresse{" + "annexe=" + annexe + ", quartier=" + quartier + ", numero=" + numero + '}';
     }
 
 }

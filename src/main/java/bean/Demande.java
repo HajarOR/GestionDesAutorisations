@@ -23,10 +23,10 @@ public class Demande implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     private Long numBureauOrdre;
-    private String nom;
-    private String prenom;
+    private String nomComplet;
     private String cin;
     private String tele;
+    private String type;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDemande;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -55,20 +55,12 @@ public class Demande implements Serializable {
         this.numBureauOrdre = numBureauOrdre;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomComplet() {
+        return nomComplet;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setNomComplet(String nomComplet) {
+        this.nomComplet = nomComplet;
     }
 
     public String getCin() {
@@ -85,6 +77,14 @@ public class Demande implements Serializable {
 
     public void setTele(String tele) {
         this.tele = tele;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Date getDateDemande() {
@@ -157,7 +157,7 @@ public class Demande implements Serializable {
 
     @Override
     public String toString() {
-        return "Demande{" + "numBureauOrdre=" + numBureauOrdre + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin + ", tele=" + tele + ", dateDemande=" + dateDemande + '}';
+        return "Demande{" + "numBureauOrdre=" + numBureauOrdre + ", nomComplet=" + nomComplet + ", cin=" + cin + ", tele=" + tele + ", type=" + type + ", dateDemande=" + dateDemande + ", dateAnnulation=" + dateAnnulation + '}';
     }
 
 }

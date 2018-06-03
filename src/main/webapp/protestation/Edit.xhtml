@@ -14,10 +14,8 @@
                     <p:panelGrid columns="2" rendered="#{protestationController.selected != null}">
                         <p:outputLabel value="#{bundle.EditProtestationLabel_numBureauOrdre}" for="numBureauOrdre" />
                         <p:inputText id="numBureauOrdre" value="#{protestationController.selected.numBureauOrdre}" title="#{bundle.EditProtestationTitle_numBureauOrdre}" />
-                        <p:outputLabel value="#{bundle.EditProtestationLabel_nom}" for="nom" />
-                        <p:inputText id="nom" value="#{protestationController.selected.nom}" title="#{bundle.EditProtestationTitle_nom}" />
-                        <p:outputLabel value="#{bundle.EditProtestationLabel_prenom}" for="prenom" />
-                        <p:inputText id="prenom" value="#{protestationController.selected.prenom}" title="#{bundle.EditProtestationTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditProtestationLabel_nomComplet}" for="nomComplet" />
+                        <p:inputText id="nomComplet" value="#{protestationController.selected.nomComplet}" title="#{bundle.EditProtestationTitle_nomComplet}" />
                         <p:outputLabel value="#{bundle.EditProtestationLabel_cin}" for="cin" />
                         <p:inputText id="cin" value="#{protestationController.selected.cin}" title="#{bundle.EditProtestationTitle_cin}" />
                         <p:outputLabel value="#{bundle.EditProtestationLabel_tele}" for="tele" />

@@ -167,15 +167,8 @@ public class UtilisateurController implements Serializable {
         return getFacade().findAll();
     }
 
-    public List<String> getItemsAvailableSelectOne() {
-        return initType();
-    }
-
-    public List<String> initType() {
-        List<String> types = new ArrayList();
-        types.add("Personne");
-        types.add("Sociète");
-        return types;
+    public List<Utilisateur> getItemsAvailableSelectOne() {
+        return getFacade().findAll();
     }
 
     @FacesConverter(forClass = Utilisateur.class)

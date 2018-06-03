@@ -21,35 +21,11 @@
                     <center><h2 class="mb insTit">Créer Votre Compte</h2></center><br/>
                     <div class="form-group">
                         <label class="col-md-2"></label>
-                        <h:outputLabel value="Prenom" class="col-md-3 control-label" />
+                        <h:outputLabel value="Email" class="col-md-3 control-label" /> 
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <p:inputText   placeholder="Prenom" class="form-control" value="#{utilisateurController.selected.prenom}"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2"></label>
-                        <h:outputLabel value="Nom" class="col-md-3 control-label" /> 
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <p:inputText  placeholder="Nom" class="form-control" value="#{utilisateurController.selected.nom}"  />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2"></label>
-                        <h:outputLabel value="Type" class="col-md-3 control-label" /> 
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span> 
-                                <h:selectOneMenu id="type" value="#{utilisateurController.selected.type}" class="form-control">
-                                    <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
-                                                   var="typeItem"
-                                                   itemValue="#{typeItem}"  class="form-control"/>
-                                </h:selectOneMenu>
+                                <p:inputText  placeholder="Nom" class="form-control" value="#{utilisateurController.selected.email}"  />
                             </div>
                         </div>
                     </div>

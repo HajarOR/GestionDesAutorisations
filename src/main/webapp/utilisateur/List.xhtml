@@ -41,21 +41,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUtilisateurTitle_type}"/>
+                                <h:outputText value="#{bundle.ListUtilisateurTitle_email}"/>
                             </f:facet>
-                            <h:outputText value="#{item.type}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUtilisateurTitle_nom}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nom}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUtilisateurTitle_prenom}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prenom}"/>
+                            <h:outputText value="#{item.email}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{utilisateurController.prepareCreate}" update=":UtilisateurCreateForm" oncomplete="PF('UtilisateurCreateDialog').show()"/>

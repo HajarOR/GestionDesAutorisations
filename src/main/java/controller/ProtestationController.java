@@ -32,6 +32,9 @@ public class ProtestationController implements Serializable {
     }
 
     public Protestation getSelected() {
+        if (selected == null) {
+            selected = new Protestation();
+        }
         return selected;
     }
 

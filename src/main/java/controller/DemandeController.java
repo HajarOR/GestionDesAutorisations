@@ -33,6 +33,9 @@ public class DemandeController implements Serializable {
     }
 
     public Demande getSelected() {
+        if (selected == null) {
+            selected = new Demande();
+        }
         return selected;
     }
 
@@ -97,7 +100,7 @@ public class DemandeController implements Serializable {
     public void setFilteredDemandes(List<Demande> filteredDemandes) {
         this.filteredDemandes = filteredDemandes;
     }
-    
+
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {

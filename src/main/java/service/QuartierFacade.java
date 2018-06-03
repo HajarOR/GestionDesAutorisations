@@ -30,8 +30,9 @@ public class QuartierFacade extends AbstractFacade<Quartier> {
     public QuartierFacade() {
         super(Quartier.class);
     }
-    public List<Quartier> findQuartierByAnnexe(Annexe annexe){
-        return getMultipleResult("SELECT q FROM Quartier WHERE q.annexe.id='"+annexe.getId()+"'");
+
+    public List<Quartier> findQuartierByAnnexe(Annexe annexe) {
+        return getMultipleResult("SELECT q FROM Quartier q WHERE q.annexe.id='" + annexe.getId() + "'");
     }
-    
+
 }

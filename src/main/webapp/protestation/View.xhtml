@@ -14,10 +14,8 @@
                     <p:panelGrid columns="2" rendered="#{protestationController.selected != null}">
                         <h:outputText value="#{bundle.ViewProtestationLabel_numBureauOrdre}"/>
                         <h:outputText value="#{protestationController.selected.numBureauOrdre}" title="#{bundle.ViewProtestationTitle_numBureauOrdre}"/>
-                        <h:outputText value="#{bundle.ViewProtestationLabel_nom}"/>
-                        <h:outputText value="#{protestationController.selected.nom}" title="#{bundle.ViewProtestationTitle_nom}"/>
-                        <h:outputText value="#{bundle.ViewProtestationLabel_prenom}"/>
-                        <h:outputText value="#{protestationController.selected.prenom}" title="#{bundle.ViewProtestationTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewProtestationLabel_nomComplet}"/>
+                        <h:outputText value="#{protestationController.selected.nomComplet}" title="#{bundle.ViewProtestationTitle_nomComplet}"/>
                         <h:outputText value="#{bundle.ViewProtestationLabel_cin}"/>
                         <h:outputText value="#{protestationController.selected.cin}" title="#{bundle.ViewProtestationTitle_cin}"/>
                         <h:outputText value="#{bundle.ViewProtestationLabel_tele}"/>

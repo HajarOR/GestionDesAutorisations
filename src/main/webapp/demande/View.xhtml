@@ -14,14 +14,14 @@
                     <p:panelGrid columns="2" rendered="#{demandeController.selected != null}">
                         <h:outputText value="#{bundle.ViewDemandeLabel_numBureauOrdre}"/>
                         <h:outputText value="#{demandeController.selected.numBureauOrdre}" title="#{bundle.ViewDemandeTitle_numBureauOrdre}"/>
-                        <h:outputText value="#{bundle.ViewDemandeLabel_nom}"/>
-                        <h:outputText value="#{demandeController.selected.nom}" title="#{bundle.ViewDemandeTitle_nom}"/>
-                        <h:outputText value="#{bundle.ViewDemandeLabel_prenom}"/>
-                        <h:outputText value="#{demandeController.selected.prenom}" title="#{bundle.ViewDemandeTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_nomComplet}"/>
+                        <h:outputText value="#{demandeController.selected.nomComplet}" title="#{bundle.ViewDemandeTitle_nomComplet}"/>
                         <h:outputText value="#{bundle.ViewDemandeLabel_cin}"/>
                         <h:outputText value="#{demandeController.selected.cin}" title="#{bundle.ViewDemandeTitle_cin}"/>
                         <h:outputText value="#{bundle.ViewDemandeLabel_tele}"/>
                         <h:outputText value="#{demandeController.selected.tele}" title="#{bundle.ViewDemandeTitle_tele}"/>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_type}"/>
+                        <h:outputText value="#{demandeController.selected.type}" title="#{bundle.ViewDemandeTitle_type}"/>
                         <h:outputText value="#{bundle.ViewDemandeLabel_dateDemande}"/>
                         <h:outputText value="#{demandeController.selected.dateDemande}" title="#{bundle.ViewDemandeTitle_dateDemande}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />

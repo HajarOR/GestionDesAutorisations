@@ -33,6 +33,9 @@ public class QuartierController implements Serializable {
     }
 
     public Quartier getSelected() {
+        if (selected == null) {
+            selected = new Quartier();
+        }
         return selected;
     }
 
@@ -81,9 +84,10 @@ public class QuartierController implements Serializable {
         }
         return items;
     }
-    public List<Quartier> findQuartierByAnnexe(Annexe annexe){
+
+    public List<Quartier> findQuartierByAnnexe(Annexe annexe) {
         return getFacade().findQuartierByAnnexe(annexe);
-    } 
+    }
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
