@@ -1,5 +1,6 @@
 package controller;
 
+import bean.Adresse;
 import bean.Protestation;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
@@ -27,6 +28,8 @@ public class ProtestationController implements Serializable {
     private service.ProtestationFacade ejbFacade;
     private List<Protestation> items = null;
     private Protestation selected;
+    private Adresse adresseProjet;
+    private Adresse adressePersonnel;
 
     public ProtestationController() {
     }
@@ -82,6 +85,39 @@ public class ProtestationController implements Serializable {
             items = getFacade().findAll();
         }
         return items;
+    }
+
+    public Adresse getAdresseProjet() {
+        if (adresseProjet == null) {
+            adresseProjet = new Adresse();
+        }
+        return adresseProjet;
+    }
+
+    public void setAdresseProjet(Adresse adresseProjet) {
+        this.adresseProjet = adresseProjet;
+    }
+
+    public Adresse getAdressePersonnel() {
+         if (adressePersonnel == null) {
+            adressePersonnel = new Adresse();
+        }
+        return adressePersonnel;
+    }
+
+    public void setAdressePersonnel(Adresse adressePersonnel) {
+        this.adressePersonnel = adressePersonnel;
+    }
+     public String createProtestation() {
+        if (selected != null) {
+            selected.setAdresseProjet(adresseProjet);
+            selected.setAdressePersonnel(adressePersonnel);
+            getFacade().edit(selected);
+            selected = null;
+            return "/template/Accueil";
+        }else{
+            return null;
+        }
     }
 
     private void persist(PersistAction persistAction, String successMessage) {

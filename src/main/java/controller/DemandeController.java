@@ -1,6 +1,10 @@
 package controller;
 
+import bean.Activite;
+import bean.Adresse;
+import bean.Annexe;
 import bean.Demande;
+import bean.Quartier;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
 import service.DemandeFacade;
@@ -28,6 +32,10 @@ public class DemandeController implements Serializable {
     private List<Demande> items = null;
     private Demande selected;
     private List<Demande> filteredDemandes;
+    private Adresse adresseProjet;
+    private Adresse adressePersonnel;
+    @EJB
+    private service.QuartierFacade quartierFacade;
 
     public DemandeController() {
     }
@@ -101,13 +109,53 @@ public class DemandeController implements Serializable {
         this.filteredDemandes = filteredDemandes;
     }
 
+    public Adresse getAdresseProjet() {
+        if (adresseProjet == null) {
+            adresseProjet = new Adresse();
+        }
+        return adresseProjet;
+    }
+
+    public void setAdresseProjet(Adresse adresseProjet) {
+        this.adresseProjet = adresseProjet;
+    }
+
+    public Adresse getAdressePersonnel() {
+        if (adressePersonnel == null) {
+            adressePersonnel = new Adresse();
+        }
+        return adressePersonnel;
+    }
+
+    public void setAdressePersonnel(Adresse adressePersonnel) {
+        this.adressePersonnel = adressePersonnel;
+    }
+
+    public List<Quartier> findQuartierByAnnexe(Annexe annexe) {
+        return quartierFacade.findQuartierByAnnexe(annexe);
+    }
+
+    public String createDemande() {
+        if (selected != null) {
+            selected.setAdresseProjet(adresseProjet);
+            selected.setAdressePersonnel(adresseProjet);
+            getFacade().edit(selected);
+            selected = null;
+            return "/template/Accueil";
+        }else{
+            return null;
+        }
+    }
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
+                    selected.setAdresseProjet(adresseProjet);
+                    selected.setAdressePersonnel(adresseProjet);
                     getFacade().edit(selected);
+                    selected = null;
                 } else {
                     getFacade().remove(selected);
                 }

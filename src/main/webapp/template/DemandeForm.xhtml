@@ -10,7 +10,7 @@
     <h:body>
         <script type="text/javascript" src="../resources/js/jquery.backstretch.min.js"></script>
         <script>
-            $.backstretch("../resources/img/inscription_bg.jpg", {speed: 500});
+            $.backstretch("../resources/img/bg5.jpg", {speed: 500});
         </script>
         <ui:include src="Header.xhtml"/>
         <ui:include src="Aside.xhtml"/>
@@ -25,31 +25,40 @@
                                     <div class="form-group">
                                         <h:outputLabel value="N⁰ du bureau d'order" class="col-sm-3 col-sm-3 control-label"/>
                                         <div class="col-sm-9">
-                                            <h:inputText value="#{demandeController.selected.numBureauOrdre}" class="form-control round-form"/>
+                                            <p:inputNumber value="#{demandeController.selected.numBureauOrdre}" inputStyleClass="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <h:outputLabel value="Nom" class="col-sm-3 col-sm-3 control-label"/>
                                         <div class="col-sm-9">
-                                            <h:inputText value="#{demandeController.selected.nomComplet}" class="form-control round-form"/>
+                                            <h:inputText value="#{demandeController.selected.nomComplet}" class="form-control"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <h:outputLabel value="CIN" class="col-sm-3 col-sm-3 control-label"/>
                                         <div class="col-sm-9">
-                                            <h:inputText value="#{demandeController.selected.cin}" class="form-control round-form"/>
+                                            <h:inputText value="#{demandeController.selected.cin}" class="form-control"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <h:outputLabel value="Téléphone" class="col-sm-3 col-sm-3control-label"/>
                                         <div class="col-sm-9">
-                                            <h:inputText value="#{demandeController.selected.tele}" class="form-control round-form"/>
+                                            <h:inputText value="#{demandeController.selected.tele}" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h:outputLabel value="Genre" class="col-sm-3 col-sm-3control-label"/>
+                                        <div class="col-sm-9">
+                                            <h:selectOneMenu id="type" value="#{demandeController.selected.type}" styleClass="form-control">
+                                                <f:selectItem itemValue="Personne" itemLabel="Personne"/>
+                                                <f:selectItem itemValue="Société" itemLabel="Société"/>
+                                            </h:selectOneMenu>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <h:outputLabel value="#{bundle.CreateProtestationLabel_activite}" for="activite" class="col-sm-3 col-sm-3 control-label"/>
                                         <div class="col-sm-9">
-                                            <h:selectOneMenu id="activite" value="#{demandeController.selected.activite}" styleClass="form-control round-form">
+                                            <h:selectOneMenu id="activite" value="#{demandeController.selected.activite}" styleClass="form-control">
                                                 <f:selectItems value="#{activiteController.itemsAvailableSelectOne}"
                                                                var="activiteItem"
                                                                itemValue="#{activiteItem}"/>
@@ -59,7 +68,7 @@
                                     <div class="form-group">
                                         <h:outputLabel value="Date demande" class="col-sm-3 col-sm-3 control-label"/>
                                         <div class="col-sm-9">
-                                            <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateDemande}" title="date Protestation" inputStyleClass="form-control round-form"/>
+                                            <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateDemande}" title="date Protestation" inputStyleClass="form-control"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -67,23 +76,25 @@
                                         <div class="col-sm-10">
                                             <h:outputLabel value="#{bundle.CreateAdresseLabel_annexe}" for="annexe" class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
-                                                <h:selectOneMenu id="adresseProjetAnnexe" value="#{demandeController.selected.adresseProjet.annexe}" class="form-control round-form" >
+                                                <h:selectOneMenu id="adresseProjetAnnexe" value="#{demandeController.adresseProjet.annexe}" class="form-control" >
+                                                    <p:ajax event="click" update="adresseProjetQuartier" listener="#{quartierController.findQuartierByAnnexe(demandeController.adresseProjet.annexe)}"/>
                                                     <f:selectItems value="#{annexeController.itemsAvailableSelectOne}"
                                                                    var="annexeItem"
-                                                                   itemValue="#{annexeItem}" class="form-control round-form"/>
+                                                                   itemValue="#{annexeItem}" class="form-control"/>
                                                 </h:selectOneMenu><br/>
+                                                
                                             </div>    
                                             <h:outputLabel  value="#{bundle.CreateAdresseLabel_quartier}" for="quartier" class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
-                                                <h:selectOneMenu id="adresseProjetQuartier" value="#{adresseController.selected.quartier}" class="form-control round-form" >
-                                                    <f:selectItems value="#{quartierController.findQuartierByAnnexe(demandeController.selected.adresseProjet.annexe)}"
+                                                <h:selectOneMenu id="adresseProjetQuartier" value="#{demandeController.adresseProjet.quartier}" class="form-control" >
+                                                    <f:selectItems value="#{quartierController.items}"
                                                                    var="quartierItem"
                                                                    itemValue="#{quartierItem}"/>
                                                 </h:selectOneMenu><br/>
                                             </div> 
                                             <h:outputLabel value="#{bundle.CreateAdresseLabel_numero}" for="numero"  class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
-                                                <h:inputText id="adresseProjetNumero" value="#{demandeController.selected.adresseProjet.numero}" title="#{bundle.CreateAdresseTitle_numero}" class="form-control round-form"/>
+                                                <h:inputText id="adresseProjetNumero" value="#{demandeController.adresseProjet.numero}" title="#{bundle.CreateAdresseTitle_numero}" class="form-control"/>
                                             </div>
                                         </div>    
                                     </div>
@@ -92,30 +103,31 @@
                                         <div class="col-sm-10">
                                             <h:outputLabel value="#{bundle.CreateAdresseLabel_annexe}" for="annexe" class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
-                                                <h:selectOneMenu id="adressePersonnelAnnexe" value="#{demandeController.selected.adressePersonnel.annexe}" class="form-control round-form" >
+                                                <h:selectOneMenu id="adressePersonnelAnnexe" value="#{demandeController.adressePersonnel.annexe}" class="form-control" >
+                                                    <p:ajax event="click" update="adressePersonnelQuartier" listener="#{quartierController.findQuartierByAnnexe(demandeController.adressePersonnel.annexe)}"/>
                                                     <f:selectItems value="#{annexeController.itemsAvailableSelectOne}"
                                                                    var="annexeItem"
-                                                                   itemValue="#{annexeItem}" class="form-control round-form"/>
+                                                                   itemValue="#{annexeItem}" class="form-control"/>
                                                 </h:selectOneMenu><br/>
                                             </div>    
                                             <h:outputLabel  value="#{bundle.CreateAdresseLabel_quartier}" for="quartier" class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
-                                                <h:selectOneMenu id="adressePersonnelQuartier" value="#{demandeController.selected.adressePersonnel.quartier}" class="form-control round-form" >
-                                                    <f:selectItems value="#{quartierController.findQuartierByAnnexe(demandeController.selected.adressePersonnel.annexe)}"
+                                                <h:selectOneMenu id="adressePersonnelQuartier" value="#{demandeController.adressePersonnel.quartier}" class="form-control" >
+                                                    <f:selectItems value="#{quartierController.items}"
                                                                    var="quartierItem"
                                                                    itemValue="#{quartierItem}"/>
                                                 </h:selectOneMenu><br/>
                                             </div> 
                                             <h:outputLabel value="#{bundle.CreateAdresseLabel_numero}" for="numero"  class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
-                                                <h:inputText id="adressePersonnelNumero" value="#{demandeController.selected.adressePersonnel.numero}" title="#{bundle.CreateAdresseTitle_numero}" class="form-control round-form"/>
+                                                <h:inputText id="adressePersonnelNumero" value="#{demandeController.adressePersonnel.numero}" title="#{bundle.CreateAdresseTitle_numero}" class="form-control"/>
                                             </div>
                                         </div>    
                                     </div>
                                     <div class="form-group">
                                         <h:outputLabel value="" class="col-sm-2 col-sm-2 control-label"/>
                                         <div class="col-sm-10">
-                                            <center><h:commandButton actionListener="#{demandeController.create}" value="Enregistrer" class="btn btn-theme btnDmd"/></center>
+                                            <center><h:commandButton action="#{demandeController.createDemande()}" value="Enregistrer" class="btn btn-theme btnDmd"/></center>
                                         </div>
                                     </div>
                                 </h:form>

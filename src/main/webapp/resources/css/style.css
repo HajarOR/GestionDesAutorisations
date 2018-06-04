@@ -109,16 +109,21 @@ Premium: http://www.gridgum.com
     color: #ffffff;
 }
 .inscMt {
-    margin-top: 2%;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-bottom: 2%;
+    margin-top: 6.1%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 6.1%;
     align-content: center;
 }
 .insBg{
     margin: 0px;
     background-color: #EFF8FB;
     color: #737373;
+}
+.insBgp{
+    margin: 0px;
+    background-color: #00c5de;
+    color: #393D40;
 }
 .btnIns{
     height: 30%;

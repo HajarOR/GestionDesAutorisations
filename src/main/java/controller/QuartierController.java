@@ -85,8 +85,8 @@ public class QuartierController implements Serializable {
         return items;
     }
 
-    public List<Quartier> findQuartierByAnnexe(Annexe annexe) {
-        return getFacade().findQuartierByAnnexe(annexe);
+    public void findQuartierByAnnexe(Annexe annexe) {
+       items = getFacade().findQuartierByAnnexe(annexe);
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
