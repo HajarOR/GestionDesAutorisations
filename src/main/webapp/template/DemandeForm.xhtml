@@ -25,7 +25,9 @@
                                     <div class="form-group">
                                         <h:outputLabel value="N⁰ du bureau d'order" class="col-sm-3 col-sm-3 control-label"/>
                                         <div class="col-sm-9">
-                                            <p:inputNumber value="#{demandeController.selected.numBureauOrdre}" inputStyleClass="form-control" />
+                                            <p:inputText value="#{demandeController.selected.numBureauOrdre}" styleClass="form-control" >
+                                                <p:keyFilter regEx="/[\d\-]/"/>
+                                            </p:inputText>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -82,7 +84,7 @@
                                                                    var="annexeItem"
                                                                    itemValue="#{annexeItem}" class="form-control"/>
                                                 </h:selectOneMenu><br/>
-                                                
+
                                             </div>    
                                             <h:outputLabel  value="#{bundle.CreateAdresseLabel_quartier}" for="quartier" class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
@@ -92,6 +94,11 @@
                                                                    itemValue="#{quartierItem}"/>
                                                 </h:selectOneMenu><br/>
                                             </div> 
+                                            <h:outputLabel value="Rue" for="numero"  class="col-sm-2 col-sm-2 control-label"/>
+                                            <div class="col-sm-10">
+                                                <h:inputText id="adresseProjetRue" value="#{demandeController.adresseProjet.numero}" title="#{bundle.CreateAdresseTitle_numero}" class="form-control"/>
+                                           <br/>
+                                            </div>
                                             <h:outputLabel value="#{bundle.CreateAdresseLabel_numero}" for="numero"  class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
                                                 <h:inputText id="adresseProjetNumero" value="#{demandeController.adresseProjet.numero}" title="#{bundle.CreateAdresseTitle_numero}" class="form-control"/>
@@ -118,6 +125,12 @@
                                                                    itemValue="#{quartierItem}"/>
                                                 </h:selectOneMenu><br/>
                                             </div> 
+                                            <h:outputLabel value="Rue" for="numero"  class="col-sm-2 col-sm-2 control-label"/>
+                                            <div class="col-sm-10">
+                                                <h:inputText id="adressePersonnelRue" value="#{demandeController.adresseProjet.numero}" title="#{bundle.CreateAdresseTitle_numero}" class="form-control"/>
+                                           <br/>
+                                            </div>
+                                            <br/>
                                             <h:outputLabel value="#{bundle.CreateAdresseLabel_numero}" for="numero"  class="col-sm-2 col-sm-2 control-label"/>
                                             <div class="col-sm-10">
                                                 <h:inputText id="adressePersonnelNumero" value="#{demandeController.adressePersonnel.numero}" title="#{bundle.CreateAdresseTitle_numero}" class="form-control"/>

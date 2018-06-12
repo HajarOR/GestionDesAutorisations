@@ -114,7 +114,7 @@ public class ProtestationController implements Serializable {
             selected.setAdressePersonnel(adressePersonnel);
             getFacade().edit(selected);
             selected = null;
-            return "/template/Accueil";
+            return "/template/Demandes";
         }else{
             return null;
         }

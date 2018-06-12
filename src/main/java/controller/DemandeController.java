@@ -1,15 +1,16 @@
 package controller;
 
-import bean.Activite;
 import bean.Adresse;
 import bean.Annexe;
 import bean.Demande;
 import bean.Quartier;
+import controller.util.DateUtil;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
 import service.DemandeFacade;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -34,6 +35,9 @@ public class DemandeController implements Serializable {
     private List<Demande> filteredDemandes;
     private Adresse adresseProjet;
     private Adresse adressePersonnel;
+    private List<Demande> demandesAnnulees;
+    private Demande selectedDemande;
+    private List<Demande> filteredDemandesAnnulees;
     @EJB
     private service.QuartierFacade quartierFacade;
 
@@ -88,7 +92,7 @@ public class DemandeController implements Serializable {
 
     public List<Demande> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = getFacade().findDemandeEnAttente();
         }
         return items;
     }
@@ -131,6 +135,36 @@ public class DemandeController implements Serializable {
         this.adressePersonnel = adressePersonnel;
     }
 
+    public List<Demande> getDemandesAnnulees() {
+        if (demandesAnnulees == null) {
+            demandesAnnulees = getFacade().findDemandeAnnules();
+        }
+        return demandesAnnulees;
+    }
+
+    public void setDemandesAnnulees(List<Demande> demandesAnnulees) {
+        this.demandesAnnulees = demandesAnnulees;
+    }
+
+    public Demande getSelectedDemande() {
+        if (selectedDemande == null) {
+            selectedDemande = new Demande();
+        }
+        return selectedDemande;
+    }
+
+    public void setSelectedDemande(Demande selectedDemande) {
+        this.selectedDemande = selectedDemande;
+    }
+
+    public List<Demande> getFilteredDemandesAnnulees() {
+        return filteredDemandesAnnulees;
+    }
+
+    public void setFilteredDemandesAnnulees(List<Demande> filteredDemandesAnnulees) {
+        this.filteredDemandesAnnulees = filteredDemandesAnnulees;
+    }
+
     public List<Quartier> findQuartierByAnnexe(Annexe annexe) {
         return quartierFacade.findQuartierByAnnexe(annexe);
     }
@@ -138,13 +172,40 @@ public class DemandeController implements Serializable {
     public String createDemande() {
         if (selected != null) {
             selected.setAdresseProjet(adresseProjet);
-            selected.setAdressePersonnel(adresseProjet);
+            selected.setAdressePersonnel(adressePersonnel);
             getFacade().edit(selected);
             selected = null;
-            return "/template/Accueil";
-        }else{
+            adresseProjet = null;
+            adressePersonnel = null;
+
+            return "/template/Demandes";
+        } else {
             return null;
         }
+    }
+
+    public void preparerEdition(Demande demande) {
+        adresseProjet = demande.getAdresseProjet();
+        adressePersonnel = demande.getAdressePersonnel();
+        selected = demande;
+    }
+
+    public void editeDemande() {
+        if (selected != null) {
+            selected.setAdresseProjet(adresseProjet);
+            selected.setAdressePersonnel(adressePersonnel);
+            getFacade().edit(selected);
+            JsfUtil.addSuccessMessage("la demande est modifiée");
+            selected = null;
+            adresseProjet = null;
+            adressePersonnel = null;
+        }else {
+            JsfUtil.addErrorMessage("la demande n'est pas modifiée");
+        }
+    }
+
+    public String changeDate(Date date) {
+        return DateUtil.formateDate("dd/MM/yyyy", date);
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
@@ -152,10 +213,7 @@ public class DemandeController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    selected.setAdresseProjet(adresseProjet);
-                    selected.setAdressePersonnel(adresseProjet);
                     getFacade().edit(selected);
-                    selected = null;
                 } else {
                     getFacade().remove(selected);
                 }

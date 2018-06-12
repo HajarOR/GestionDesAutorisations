@@ -33,6 +33,14 @@ public class DemandeFacade extends AbstractFacade<Demande> {
         super(Demande.class);
     }
 
+    public List<Demande> findDemandeEnAttente() {
+        return getMultipleResult("SELECT d FROM Demande d WHERE d.dateAnnulation IS NULL");
+    }
+
+    public List<Demande> findDemandeAnnules() {
+        return getMultipleResult("SELECT d FROM Demande d WHERE d.dateAnnulation IS NOT NULL");
+    }
+
     public List<Demande> searchDemande(String nom, String prenom, Adresse adresse) {
         if (nom == null && prenom == null && adresse == null) {
             return null;
